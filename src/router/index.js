@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/pages/login'
+import Index from '@/pages/index'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: '',
       component: Login
-    }
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: Index
+    },
   ]
 })
