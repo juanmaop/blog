@@ -1,37 +1,7 @@
 <template>
   <div class="all">
-    <div class="grid-content bg-purple-dark">
-      <el-menu
-        :default-active="activeIndex"
-        class="el-menu-demo header"
-        mode="horizontal"
-        @select="handleSelect"
-      >
-        <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">发博客</el-menu-item>
-        <el-menu-item index="3">Javascript</el-menu-item>
-        <el-menu-item index="4">Vue</el-menu-item>
-        <el-menu-item index="5">Css</el-menu-item>
-        <el-menu-item index="6">Java</el-menu-item>
-        <el-menu-item index="7">MySql</el-menu-item>
-        <!--
-        <el-submenu index="3">
-          <template slot="title">后端</template>
-          <el-menu-item index="3-1">spring</el-menu-item>
-          <el-menu-item index="3-2">redis</el-menu-item>
-          <el-menu-item index="3-3">Mysql</el-menu-item>
-        </el-submenu>-->
-        <el-menu-item index="8">Git</el-menu-item>
-        <el-menu-item index="9">Python</el-menu-item>
-        <el-submenu index="10">
-          <template slot="title">作者</template>
-          <el-menu-item index="10-1">卷毛</el-menu-item>
-          <el-menu-item index="10-2">贵</el-menu-item>
-        </el-submenu>
-      </el-menu>
-    </div>
     <el-container class="main">
-      <el-aside class="main-left" style="width:1200px;">
+      <el-aside class="main-left" style="width:900px;">
         <el-row class="main-left-row">
           <el-col>
             <el-card :body-style="{ padding: '0px' }" class="main-left-row-card">
@@ -39,7 +9,8 @@
                 <img src="../assets/cover1.jpg" class="image">
                 <div class="main-left-row-card-top-article">
                   <div class="main-left-div">
-                    <a href="javascript:void()" class="main-left-tag">javascript</a>
+                    <router-link class="main-left-tag" v-bind:to="/blogDetail/+1">javascript</router-link>
+                    <!-- <a href="javascript:void()" class="main-left-tag">javascript</a> -->
                     <a href="javascript:void()" class="main-left-title">谈一谈javascript中的this</a>
                   </div>
                   <div
@@ -57,6 +28,7 @@
                 </div>
               </div>
             </el-card>
+            <router-view></router-view>
           </el-col>
         </el-row>
       </el-aside>
@@ -91,9 +63,6 @@
         </el-card>
       </el-main>
     </el-container>
-    <div class="grid-content footer">
-      <div class="footer-version">当前版本：V1.0</div>
-    </div>
   </div>
 </template>
 <script>
@@ -108,9 +77,6 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     querySearch(queryString, cb) {
       var restaurants = this.restaurants;
       var results = queryString
@@ -135,6 +101,9 @@ export default {
         { value: "Git", address: "" }
       ];
     },
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
     handleSelect(item) {
       console.log(item);
     }
@@ -143,20 +112,35 @@ export default {
     this.restaurants = this.loadAll();
   }, 
   created(){
-  //      this.axios.get('http://119.29.96.116:8762/blog/listBlog')
-  // .then(res => {
+       this.$axios.post('/blog/listBlog',{},)
+  .then(res => {
+    // 成功回调
+    console.log('成功')
+  }, res => {
+    // 错误回调
+    console.log('失败'+res|json)
+  })
+
+  // this.$axios({
+  // 	method:"POST",
+  // 	url:'/blog/listBlog',
+  // 	data:{
+  		
+  // 	},
+  // }).then(res => {
   //   // 成功回调
   //   console.log('成功')
   // }, res => {
   //   // 错误回调
+  //   console.log('失败'+res|json)
   // })
+
+  
    },
 };
 </script>
 <style lang='less'>
-.header {
-  margin-left: 1000px;
-}
+
 .all {
   font-family: Microsoft YaHei;
 }
@@ -168,20 +152,6 @@ export default {
 }
 .el-col {
   border-radius: 4px;
-}
-.bg-purple-dark {
-  //   background: #9caebf;
-  //   height: 190px;
-}
-.footer {
-  background: #9caebf;
-  height: 150px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
 }
 .grid-content {
   border-radius: 4px;
@@ -298,5 +268,11 @@ export default {
 
 .clearfix:after {
   clear: both;
+}
+@media screen and (max-width: 1400px) {
+
+.main-left {
+  width: 900px;
+}
 }
 </style>
