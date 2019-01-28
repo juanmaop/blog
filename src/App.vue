@@ -23,7 +23,7 @@
         <el-submenu index="10">
           <template slot="title">作者</template>
           <el-menu-item index="10-1">卷毛</el-menu-item>
-          <el-menu-item index="10-2">贵</el-menu-item>
+          <el-menu-item index="10-2">vhgq</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>
@@ -71,7 +71,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 .header {
   margin-left: 1000px;

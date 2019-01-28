@@ -4,26 +4,26 @@
       <el-aside class="main-left" style="width:900px;">
         <el-row class="main-left-row">
           <el-col>
-            <el-card :body-style="{ padding: '0px' }" class="main-left-row-card">
+            <el-card :body-style="{ padding: '0px' }" class="main-left-row-card" v-for="(blog,index) in blogList" v-bind:blog="blog" v-bind:key="index">
               <div class="main-left-row-card-top">
-                <img src="../assets/cover1.jpg" class="image">
+                <img :src="blog.blogCover" class="image">
                 <div class="main-left-row-card-top-article">
                   <div class="main-left-div">
-                    <router-link class="main-left-tag" v-bind:to="/blogDetail/+1">javascript</router-link>
+                    <router-link class="main-left-tag" v-bind:to="/blogDetail/+1">{{blog.blogTags}}</router-link>
                     <!-- <a href="javascript:void()" class="main-left-tag">javascript</a> -->
-                    <a href="javascript:void()" class="main-left-title">谈一谈javascript中的this</a>
+                    <a href="javascript:void()" class="main-left-title">{{blog.blogTitle}}</a>
                   </div>
                   <div
                     class="main-left-row-card-top-article-content main-left-content"
-                  >这是javascript异步系列文章的第十篇，也是最后一篇，总结并归档。 十篇文章不足以把异步解释清清楚楚， 异步这块知识点在js中占比很大，很多莫名其妙的bug也出现在这里， 比如说下面的这个栗子： 一个bug 目录 …</div>
+                  >{{blog.blogIntroduction}}</div>
                 </div>
               </div>
               <div class="main-left-row-card-bottom">
                 <div class="bottom clearfix">
-                  <time class="time">2019年1月15日</time>
-                  <a href="javascript:void()">0条评论</a>
-                  <a href="javascript:void()">200次阅读</a>
-                  <a href="javascript:void()">4人点赞</a>
+                  <time class="time">{{blog.blogLastUpdateTime}}</time>
+                  <router-link  v-bind:to="/blogDetail/+1" class="main-left-row-card-bottom-router">{{blog.blogCommentCount}}条评论</router-link>
+                  <router-link  v-bind:to="/blogDetail/+1" class="main-left-row-card-bottom-router">{{blog.blogReadCount}}次阅读</router-link>
+                  <router-link  v-bind:to="/blogDetail/+1" class="main-left-row-card-bottom-router">{{blog.blogLikeCount}}人点赞</router-link>
                   <el-button type="text" class="button">阅读全文></el-button>
                 </div>
               </div>
@@ -73,7 +73,8 @@ export default {
       activeIndex2: "1",
       //   currentDate: new Date()
       restaurants: [],
-      state1: ""
+      state1: "",
+      blogList:[]
     };
   },
   methods: {
@@ -115,10 +116,11 @@ export default {
        this.$axios.post('/blog/listBlog',{},)
   .then(res => {
     // 成功回调
-    console.log('成功')
+    this.blogList=res.data
+    console.log('成功'+JSON.stringify(res.data))
   }, res => {
     // 错误回调
-    console.log('失败'+res|json)
+    console.log('失败'+JSON.stringify(res))
   })
 
   // this.$axios({
@@ -174,8 +176,6 @@ export default {
 .main-left-row-card-top {
   display: flex;
 }
-.main-left-row-card-top-article {
-}
 .main-left-div {
   color: #333333;
   font-size: 21px;
@@ -201,11 +201,11 @@ export default {
 .main-left-row-card-bottom {
   border-top: 1px solid #f3f3f3;
   padding: 14px;
-  a {
-    text-decoration: none;
+}
+.main-left-row-card-bottom-router{
+text-decoration: none;
     color: #000;
     margin-right: 10px;
-  }
 }
 .main-right {
   margin: 0;
@@ -256,8 +256,9 @@ export default {
   width: 240px;
   height: 145px;
   display: block;
-  margin: auto;
   margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .clearfix:before,
@@ -273,6 +274,13 @@ export default {
 
 .main-left {
   width: 900px;
+}
+}
+@media screen and (min-width: 1700px) {
+
+.main-left {
+  width: 900px;
+  margin-left: 300px;
 }
 }
 </style>
