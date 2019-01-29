@@ -31,6 +31,8 @@
     <div class="grid-content footer">
       <div class="footer-version">当前版本：V1.0</div>
     </div>
+
+    
   </div>
 </template>
 
