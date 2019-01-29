@@ -1,16 +1,53 @@
+<br>
+
 # blog
+
+<br>
 
 > 凛冬将至的博客
 
+<br>
+
 ## 技术栈
 
-``` bash
-1.vue.js
-2.webpack
-3.ES6
-4.element-ui
-```
+- vue.js
 
+- webpack
 
+- ES6
 
+- element-ui
 
+<br>
+
+# blog
+
+<br>
+
+> 凛冬将至的博客
+
+<br>
+
+## 技术栈
+
+- vue.js
+- webpack
+- ES6
+- element-ui
+
+<br>
+
+# blog
+
+<br>
+
+> 凛冬将至的博客
+
+<br>
+
+## 技术栈
+
+- vue.js
+- webpack
+- ES6
+- element-ui

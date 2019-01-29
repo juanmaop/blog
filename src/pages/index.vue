@@ -9,7 +9,7 @@
                 <img :src="blog.blogCover" class="image">
                 <div class="main-left-row-card-top-article">
                   <div class="main-left-div">
-                    <router-link class="main-left-tag" v-bind:to="/blogDetail/+1">{{blog.blogTags}}</router-link>
+                    <router-link class="main-left-tag" v-bind:to="/blogDetail/+blog.id">{{blog.blogTags}}</router-link>
                     <!-- <a href="javascript:void()" class="main-left-tag">javascript</a> -->
                     <a href="javascript:void()" class="main-left-title">{{blog.blogTitle}}</a>
                   </div>
@@ -117,170 +117,153 @@ export default {
   .then(res => {
     // 成功回调
     this.blogList=res.data
-    console.log('成功'+JSON.stringify(res.data))
+    // console.log('成功'+JSON.stringify(res.data))
   }, res => {
     // 错误回调
     console.log('失败'+JSON.stringify(res))
   })
-
-  // this.$axios({
-  // 	method:"POST",
-  // 	url:'/blog/listBlog',
-  // 	data:{
-  		
-  // 	},
-  // }).then(res => {
-  //   // 成功回调
-  //   console.log('成功')
-  // }, res => {
-  //   // 错误回调
-  //   console.log('失败'+res|json)
-  // })
-
-  
    },
 };
 </script>
 <style lang='less'>
-
-.all {
-  font-family: Microsoft YaHei;
-}
-.el-row {
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
+ .all {
+    font-family: Microsoft YaHei;
   }
-}
-.el-col {
-  border-radius: 4px;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
-.main {
-  // height: 1200px;
-  margin-top: 50px;
-}
-.main-left {
-  width: 1200px;
-}
-.main-left-row {
-  float: right;
-  width: 750px;
-}
-.main-left-row-card {
-  margin-bottom: 20px;
-}
-.main-left-row-card-top {
-  display: flex;
-}
-.main-left-div {
-  color: #333333;
-  font-size: 21px;
-  text-align: left;
-  margin-left: 20px;
-  padding-top: 10px;
-}
-.main-left-tag {
-  background-color: #00a2ff;
-  color: #fff;
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .main {
+    // height: 1200px;
+    margin-top: 50px;
+  }
+  .main-left {
+    width: 1200px;
+  }
+  .main-left-row {
+    float: right;
+    width: 750px;
+  }
+  .main-left-row-card {
+    margin-bottom: 20px;
+  }
+  .main-left-row-card-top {
+    display: flex;
+  }
+  .main-left-div {
+    color: #333333;
+    font-size: 21px;
+    text-align: left;
+    margin-left: 20px;
+    padding-top: 10px;
+  }
+  .main-left-tag {
+    background-color: #00a2ff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12rpx;
+  }
+  .main-left-title {
+    text-decoration: none;
+    color: #333333;
+  }
+  .main-left-row-card-top-article-content {
+    text-align: left;
+    margin: 20px;
+    font-size: 15px;
+  }
+  .main-left-row-card-bottom {
+    border-top: 1px solid #f3f3f3;
+    padding: 14px;
+  }
+  .main-left-row-card-bottom-router{
   text-decoration: none;
-  font-size: 12rpx;
-}
-.main-left-title {
-  text-decoration: none;
-  color: #333333;
-}
-.main-left-row-card-top-article-content {
-  text-align: left;
-  margin: 20px;
-  font-size: 15px;
-}
-.main-left-row-card-bottom {
-  border-top: 1px solid #f3f3f3;
-  padding: 14px;
-}
-.main-left-row-card-bottom-router{
-text-decoration: none;
+      color: #000;
+      margin-right: 10px;
+  }
+  .main-right {
+    margin: 0;
+    margin-left: 50px;
+    padding: 0;
+  }
+  .right-box-card {
+    width: 360px;
+    height: 145px;
+    margin-bottom: 20px;
+  }
+  .right-box-card-inside {
+    text-align: left;
+    width: 360px;
+  }
+  .right-tag{
+    margin-bottom: 5px;
+  }
+  .inline-input {
+    width: 300px;
+    margin-top: 10px;
+  }
+  .footer-version {
+    padding-top: 50px;
+  }
+  .time {
+    font-size: 12px;
+    color: #999;
+    float: left;
+    margin-right: 20px;
+  }
+  
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  .button {
+    padding: 0;
+    float: right;
+    font-size: 12px;
     color: #000;
-    margin-right: 10px;
-}
-.main-right {
-  margin: 0;
-  margin-left: 50px;
-  padding: 0;
-}
-.right-box-card {
-  width: 360px;
-  height: 145px;
-  margin-bottom: 20px;
-}
-.right-box-card-inside {
-  text-align: left;
-  width: 360px;
-}
-.right-tag{
-  margin-bottom: 5px;
-}
-.inline-input {
-  width: 300px;
-  margin-top: 10px;
-}
-.footer-version {
-  padding-top: 50px;
-}
-.time {
-  font-size: 12px;
-  color: #999;
-  float: left;
-  margin-right: 20px;
-}
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-  font-size: 12px;
-  text-align: left;
-}
-
-.button {
-  padding: 0;
-  float: right;
-  font-size: 12px;
-  color: #000;
-}
-
-.image {
-  width: 240px;
-  height: 145px;
-  display: block;
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
-@media screen and (max-width: 1400px) {
-
-.main-left {
-  width: 900px;
-}
-}
-@media screen and (min-width: 1700px) {
-
-.main-left {
-  width: 900px;
-  margin-left: 300px;
-}
-}
+  }
+  
+  .image {
+    width: 240px;
+    height: 145px;
+    display: block;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  
+  .clearfix:after {
+    clear: both;
+  }
+  @media screen and (max-width: 1400px) {
+  
+  .main-left {
+    width: 900px;
+  }
+  }
+  @media screen and (min-width: 1700px) {
+  
+  .main-left {
+    width: 900px;
+    margin-left: 300px;
+  }
+  }
 </style>
