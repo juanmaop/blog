@@ -1,70 +1,70 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> 
-    <el-button @click="startHacking">Start</el-button> 
-    <router-view/> -->
     <div class="grid-content bg-purple-dark">
       <el-menu
-        :default-active="activeIndex"
+        :default-active="$route.path"
         router 
         class="el-menu-demo header"
         mode="horizontal"
         
       >
         <el-menu-item index="/index">首页</el-menu-item>
-        <el-menu-item index="2">发博客</el-menu-item>
-        <el-menu-item index="3">Javascript</el-menu-item>
-        <el-menu-item index="4">Vue</el-menu-item>
-        <el-menu-item index="5">Css</el-menu-item>
-        <el-menu-item index="6">Java</el-menu-item>
-        <el-menu-item index="7">MySql</el-menu-item>
-        <el-menu-item index="8">Git</el-menu-item>
-        <el-menu-item index="9">Python</el-menu-item>
+        <el-menu-item index="/AddBlog">发博客</el-menu-item>
+        <el-menu-item index="/index/javascript">Javascript</el-menu-item>
+        <el-menu-item index="/index/vue">Vue</el-menu-item>
+        <el-menu-item index="/index/css">Css</el-menu-item>
+        <el-menu-item index="/index/java">Java</el-menu-item>
+        <el-menu-item index="/index/mysql">MySql</el-menu-item>
+        <el-menu-item index="/index/git">Git</el-menu-item>
+        <el-menu-item index="/index/python">Python</el-menu-item>
         <el-submenu index="10">
           <template slot="title">作者</template>
           <el-menu-item index="10-1">卷毛</el-menu-item>
           <el-menu-item index="10-2">vhgq</el-menu-item>
         </el-submenu>
+        <el-menu-item index="/login">登录</el-menu-item>
       </el-menu>
     </div>
     <router-view></router-view>
+
     <div class="grid-content footer">
       <div class="footer-version">当前版本：V1.0</div>
     </div>
-
-    
+  <div class="arrow-up" @click="scrollUp" v-show="showScroll">
+    <i class="el-icon-caret-top "></i>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  // name: 'App',
   data() {
     return {
       activeIndex: "/index",
       activeIndex2: "1",
-      //   currentDate: new Date()
       restaurants: [],
-      state1: ""
+      state1: "",
+      showScroll:false,
+      timer: null
     };
   },
   methods: {
-    // startHacking () {
-    //   this.$notify({
-    //     title: 'It works!',
-    //     type: 'success',
-    //     message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
-    //     duration: 5000
-    //   })
-    // }
-    // handleSelect(key, keyPath) {
-    //   console.log(key, keyPath);
-    // },
-    // handleSelect(item) {
-    //   console.log(item);
-    // }
+    scrollUp(){
+    
+       document.body.scrollTop=0
+      document.documentElement.scrollTop =0
+    },
+    handleScroll () {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+  if(scrollTop>=600)
+    this.showScroll=true
+  else
+    this.showScroll=false
+},
   },
-
+  mounted(){
+    window.addEventListener('scroll', this.handleScroll)
+  },
 }
 </script>
 
@@ -89,7 +89,27 @@ export default {
 .el-col {
   border-radius: 4px;
 }
-
+.arrow-up{
+  position: fixed;
+  background-color: #fff;
+    right: 100px;
+    bottom: 200px;
+    width: 40px;
+    height: 40px;
+    size: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 0 6px rgba(0,0,0,.12);
+    z-index: 5;
+}
+.arrow-up i{
+      color: #409eff;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+}
 .footer {
   background: #9caebf;
   height: 150px;
@@ -105,7 +125,6 @@ export default {
   min-height: 36px;
 }
 .main {
-  // height: 1200px;
   margin-top: 50px;
 }
 

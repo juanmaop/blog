@@ -8,12 +8,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dark.css'
 import axios from 'axios'
+// import mavonEditor from 'mavon-editor'
+// import 'mavon-editor/dist/css/index.css'
 // import Vueaxios from 'vue-axios'
 Vue.config.productionTip = false
 // Vue.prototype.$http=axios
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = "http://119.29.96.116:8762/"
 Vue.use(ElementUI)
+// Vue.use(mavonEditor)
 // Vue.use(Vueaxios, axios)
 /* eslint-disable no-new */
 Vue.directive('highlight', (el) => {
@@ -28,6 +31,5 @@ new Vue({
   router,
   axios,
   render: h => h(App),
-  // components: { App },
   template: '<App/>'
 })

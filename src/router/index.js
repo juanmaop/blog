@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/pages/login'
 import Index from '@/pages/index'
 import BlogDetail from '@/pages/blogDetail'
+import AddBlog from '@/pages/AddBlog'
 Vue.use(Router)
 
 export default new Router({
@@ -17,7 +18,7 @@ export default new Router({
     {
       path: '/',
       name: '',
-      component: Login
+      component: Index
     },
     {
       path: '/index',
@@ -25,9 +26,24 @@ export default new Router({
       component: Index
     },
     {
+      path: '/index/:tag',
+      name: 'Tag',
+      component: Index
+    },
+    {
       path: '/blogDetail/:id',
       name: 'BlogDetail',
       component: BlogDetail
+    },
+    {
+      path: '/AddBlog',
+      name: 'AddBlog',
+      component: AddBlog
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
   ]
 })

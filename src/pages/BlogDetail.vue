@@ -121,7 +121,7 @@ export default {
     // 成功回调
     this.blogTitle=res.data.blogTitle;
     this.blogIntroduction=res.data.blogIntroduction;
-    this.blogTags=res.data.blogTags;
+    this.blogTags=res.data.blogTags; 
     this.blogIntroduction=res.data.blogIntroduction;
     this.blogContent=res.data.blogContent;
     this.blogLikeCount=res.data.blogLikeCount;
@@ -136,7 +136,7 @@ export default {
    },
 };
 </script>
-<style lang='less'>
+<style lang='less' scoped>
 #all {
   
   line-height: 30px;
@@ -235,7 +235,7 @@ code {
 }
 .right-box-card {
   width: 360px;
-  height: 145px;
+  height: 165px;
   margin-bottom: 20px;
 }
 .right-box-card-inside {

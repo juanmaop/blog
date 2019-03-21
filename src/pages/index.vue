@@ -111,23 +111,29 @@ export default {
   },
   mounted() {
     this.restaurants = this.loadAll();
+    
   }, 
   created(){
        this.$axios.post('/blog/listBlog',{},)
   .then(res => {
     // 成功回调
     this.blogList=res.data
+    
     // console.log('成功'+JSON.stringify(res.data))
   }, res => {
     // 错误回调
     console.log('失败'+JSON.stringify(res))
   })
    },
+   updated(){
+     console.log('updated')
+   }
 };
 </script>
-<style lang='less'>
+<style lang='less' scoped>
  .all {
     font-family: Microsoft YaHei;
+    margin-bottom: 200px;
   }
   .el-row {
     margin-bottom: 20px;

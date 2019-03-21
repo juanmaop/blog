@@ -53,7 +53,7 @@
   }
 
 </script>
-<style scoped lang="less">
+<style scoped lang="less" scoped>
   .login-container {
     -webkit-border-radius: 5px;
     border-radius: 5px;
