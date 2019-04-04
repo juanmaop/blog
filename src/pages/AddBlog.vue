@@ -103,5 +103,8 @@ export default {
   margin: auto;
   margin-top: 20px;
 }
+span{
+  color: #fff;
+}
 </style>
 

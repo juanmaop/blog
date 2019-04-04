@@ -61,6 +61,9 @@
             <el-tag type="warning" class="right-tag">作用域</el-tag>
           </el-col>
         </el-card>
+        <!-- <ul>
+          <li v-for="item in Mockdata" :key="item.index">{{item}}</li>
+        </ul> -->
       </el-main>
     </el-container>
   </div>
@@ -74,7 +77,8 @@ export default {
       //   currentDate: new Date()
       restaurants: [],
       state1: "",
-      blogList:[]
+      blogList:[],
+      Mockdata:[]
     };
   },
   methods: {
@@ -122,6 +126,11 @@ export default {
     // console.log('成功'+JSON.stringify(res.data))
   }, res => {
     // 错误回调
+    console.log('失败'+JSON.stringify(res))
+  })
+   this.$axios.get('/api/data').then(res => {
+    this.Mockdata=res.data
+  }, res => {
     console.log('失败'+JSON.stringify(res))
   })
    },

@@ -25,7 +25,7 @@ Vue.directive('highlight', (el) => {
       hljs.highlightBlock(block)
   })
 })
-
+require('./mock.js')
 new Vue({
   el: '#app',
   router,

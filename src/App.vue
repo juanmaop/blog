@@ -4,9 +4,9 @@
       <el-menu
         :default-active="$route.path"
         router 
-        class="el-menu-demo header"
+        class="el-menu-demo"
         mode="horizontal"
-        
+        style="margin-left:1000px;"
       >
         <el-menu-item index="/index">首页</el-menu-item>
         <el-menu-item index="/AddBlog">发博客</el-menu-item>

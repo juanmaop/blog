@@ -54,6 +54,10 @@
 
 </script>
 <style scoped lang="less" scoped>
+span{
+  margin-top: 0;
+  color: #fff;
+}
   .login-container {
     -webkit-border-radius: 5px;
     border-radius: 5px;

@@ -21,6 +21,11 @@ export default new Router({
       component: Index
     },
     {
+      path: '/index.html',
+      name: 'Index',
+      component: Index
+    },
+    {
       path: '/index',
       name: 'Index',
       component: Index
